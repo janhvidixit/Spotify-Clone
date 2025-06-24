@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Playlists</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:,">
+  <style>
+    /* Example inline styles for playlist items */
+    .playlistItem {
+      padding: 10px;
+      cursor: pointer;
+      color: white;
+      font-size: 1rem;
+    }
+    .playlistItem:hover { 
+      background: rgba(51, 51, 51, 0.2); 
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li class="brand"><img src="assets/images/logo.png" alt="Spotify">Spotify</li>
+      <li><a href="index.html" style="cursor: pointer; color: white; text-decoration: none;">Home</a></li>
+      <li><a href="playlists.html" style="cursor: pointer; color: white; text-decoration: none;">Playlists</a></li>
+    </ul>
+  </nav>
+
+  <div class="container" style="background: linear-gradient(to bottom, #d1b170 0%, #1e1e1e 50%, #000000 100%);">
+    <h1>Your Playlists</h1>
+
+    <!-- Liked Songs Link -->
+    <div class="playlistItem">
+      <a href="liked_songs.html" style="color: white; text-decoration: none;">Liked Songs</a>
+    </div>
+
+    <div id="playlistsContainer">
+      <!-- User-created playlists will be dynamically inserted here -->
+    </div>
+  </div>
+
+  <script>
+    // Function to load and display playlists
+    function loadPlaylists() {
+      const playlists = JSON.parse(localStorage.getItem("playlists")) || {};
+      const container = document.getElementById("playlistsContainer");
+      if (!playlistsContainer) return;
+      container.innerHTML = "";
+
+      // Loop through user-created playlists
+      for (let playlistName in playlists) {
+        const songList = playlists[playlistName];
+        const playlistItem = document.createElement("div");
+        playlistItem.classList.add("playlistItem");
+        playlistItem.innerHTML = `<h3>${playlistName} (${songList.length})</h3>`;
+        
+        // Example click event (customize behavior as needed)
+        playlistItem.addEventListener("click", () => {
+          alert(playlistName + " song IDs: " + songList.join(", "));
+        });
+
+        container.appendChild(playlistItem);
+      }
+    }
+
+    // Load playlists on page load
+    document.addEventListener("DOMContentLoaded", loadPlaylists);
+  </script>
+</body>
+</html>

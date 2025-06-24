@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liked Songs</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:,">
+</head>
+<body>
+    <nav>
+        <ul>
+          <li class="brand"><img src="assets/images/logo.png" alt="Spotify">Spotify</li>
+          <li><a href="index.html" style=" cursor: pointer; color: white; text-decoration: none;">Home</a></li>
+          <li><a href="playlists.html" style="cursor: pointer; color: white; text-decoration: none;">Playlists</a></li>
+        </ul>
+    </nav>
+
+    <div class="container" style="background: linear-gradient(to bottom, #7fa2c0 0%, #1e1e1e 50%, #000000 100%);">
+        <h1>Liked Songs</h1>
+        <div class="container2" style="background: none; padding-top: 20px;">
+            <div class="songList" >
+                <div id="likedSongsContainer" >
+                    <!-- Liked songs will be added dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom">
+        <input type="range" id="myProgressBar" min="0" value="0" max="100">
+        <div class="icons">
+            <i id="previous" class="songItemControl fa-2x fa-solid fa-backward"></i>
+            <i id="masterPlay" class="fa-3x fa-solid fa-play"></i>
+            <i id="next" class="songItemControl fa-2x fa-solid fa-forward"></i>
+        </div>
+        <div class="songInfo">
+            <img src="assets/images/cover1.webp" width="42px" id="cov">
+            <span id="masterSongName">Select a song</span>
+        </div>
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+    <!-- <script>
+        document.addEventListener("DOMContentLoaded", loadLikedSongsPage);
+        function loadLikedSongsPage() {
+            let userEmail = localStorage.getItem("username");
+            console.log("User Email:", userEmail);
+
+            let userLikes = JSON.parse(localStorage.getItem("likedSongs")) || {};
+            console.log("User Likes Object:", userLikes);
+
+            // let likedSongs = userLikes[userEmail] || [];
+            let likedSongs = (userLikes[userEmail] || []).filter(id => id !== undefined && id !== "undefined");
+
+            console.log("Liked Songs Array:", likedSongs);
+
+            let container = document.getElementById("likedSongsContainer");
+            console.log("Container Found:", container);
+
+            if (!container) {
+            console.error("Container not found!");
+            return;
+        }
+
+        if (likedSongs.length === 0) {
+            container.innerHTML = '<p>No liked songs yet.</p>';
+            return;
+        }
+
+        let allSongs = JSON.parse(localStorage.getItem("allSongs")) || [];
+        console.log("All Songs Data:", allSongs);
+
+        container.innerHTML = "";
+        likedSongs.forEach(songId => {
+            let song = allSongs.find(s => s.id === songId);
+
+            console.log("Current Song:", song);
+
+            if (!song) return;
+
+            let songItem = document.createElement("div");
+            songItem.classList.add("songItem");
+            songItem.innerHTML = `
+                <span class="covandplay">
+                    <img src="${song.cover}" alt="${song.title}">
+                    <i id="${songId}" class="songItemPlay fa-solid fa-play"></i>
+                </span>
+                <span class="songName">${song.title}</span>
+                <span class="songListPlay">
+                    <i id="like-${songId}" class="likeButton fa-solid fa-heart"></i>
+                </span>
+            `;
+            container.appendChild(songItem);
+        });
+
+        console.log("Liked Songs Displayed Successfully");
+} 
+ -->

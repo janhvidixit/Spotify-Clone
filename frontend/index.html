@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Clone</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:,">
+</head>
+<body>
+    <nav>
+        <ul>
+          <li class="brand"><img src="assets/images/logo.png" alt="Spotify">Spotify</li>
+          <li>Home</li>
+          <li><a href="playlists.html" style="cursor: pointer; color: white; text-decoration: none;">Playlists</a></li>
+          <li><a href="liked_songs.html" style="cursor: pointer; color: white; text-decoration: none;">Liked Songs</a></li>
+          
+          <!-- Login Option -->
+          <li id="loginNav" onclick="showLoginPopup()">Login</li>
+      
+          <!-- Username Dropdown (Hidden initially) -->
+          <li id="userDropdown" style="display: none; position: relative;">
+            <span id="usernameDisplay"></span>
+            <ul id="dropdownMenu" class="dropdown-content">
+              <li onclick="logout()" id="logout">Logout</li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      
+
+    <div class="container">
+        <h1>Your Top Songs</h1>
+        <div class="container2">
+            <div class="songList">
+                <div id="songItemContainer">
+                    <!-- Songs will be dynamically inserted here -->
+                </div>
+            </div>
+            <div class="songBanner"></div>
+        </div>
+    </div>
+
+    <div class="bottom">
+        <input type="range" id="myProgressBar" min="0" value="0" max="100">
+        <div class="icons">
+            <i id="previous" class="songItemControl fa-2x fa-solid fa-backward"></i>
+            <i id="masterPlay" class="fa-3x fa-solid fa-play"></i>
+            <i id="next" class="songItemControl fa-2x fa-solid fa-forward"></i>
+        </div>
+        <div class="songInfo">
+            <img src="assets/images/cover1.webp" width="42px" id="cov">
+            <span id="masterSongName">Select a song</span>
+        </div>
+        
+    </div>
+
+    <!-- Login Popup -->
+<div id="loginPopup" class="popup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closeLoginPopup()">&times;</span>
+        <h2>Login</h2>
+        <input type="text" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="handleLogin()">Login</button>
+        <p id="loginError" style="color: red; display: none;">Invalid credentials</p>
+    </div>
+</div>
+
+
+    <script src="https://kit.fontawesome.com/a12756eda8.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
